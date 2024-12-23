@@ -8,11 +8,13 @@ if (!userMessage) {
   process.exit(1)
 }
 
-const weatherTool = {
-  name: 'get_weather',
-  parameters: z.object({}),
+const vimTool = {
+  name: 'get_vim_commands',
+  parameters: z.object({
+    reasoning: z.string().describe('why did you pick this commands?'),
+  }),
 }
 
-const response = await runAgent({ userMessage, tools: [weatherTool] })
+const response = await runAgent({ userMessage, tools: [vimTool] })
 
-console.log(response)
+//console.log(response)
